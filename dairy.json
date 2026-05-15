@@ -1,0 +1,221 @@
+{
+  "days": [
+    {
+      "day": 0,
+      "meals": {
+        "breakfast": [
+          {"item": "brown upma", "cal": 220, "protein": 6, "fiber": 4},
+          {"item": "sambar", "cal": 40, "protein": 2, "fiber": 2},
+          {"item": "3 boiled eggs", "cal": 210, "protein": 18, "fiber": 0}
+        ],
+        "lunch": [
+          {"item": "chicken curry", "cal": 450, "protein": 35, "fiber": 2}
+        ],
+        "dinner": [
+          {"item": "chicken curry", "cal": 380, "protein": 30, "fiber": 1},
+          {"item": "bread chaat", "cal": 60, "protein": 2, "fiber": 1},
+          {"item": "chocolate popcorn", "cal": 60, "protein": 1, "fiber": 1}
+        ]
+      },
+      "total_cal": 1420,
+      "steps": 4500
+    },
+    {
+      "day": 1,
+      "meals": {
+        "breakfast": [
+          {"item": "2 dosas", "cal": 250, "protein": 6, "fiber": 2},
+          {"item": "3 eggs", "cal": 210, "protein": 18, "fiber": 0}
+        ],
+        "lunch": [
+          {"item": "chicken fried rice", "cal": 700, "protein": 30, "fiber": 3}
+        ],
+        "dinner": [
+          {"item": "popcorn", "cal": 200, "protein": 3, "fiber": 2}
+        ]
+      },
+      "total_cal": 1360,
+      "steps": 4500
+    },
+    {
+      "day": 2,
+      "meals": {
+        "breakfast": [
+          {"item": "fried rice", "cal": 350, "protein": 15, "fiber": 2}
+        ],
+        "lunch": [
+          {"item": "quinoa+moong dal", "cal": 250, "protein": 10, "fiber": 5},
+          {"item": "tomato pappu", "cal": 200, "protein": 10, "fiber": 5},
+          {"item": "3 egg omelette", "cal": 210, "protein": 18, "fiber": 0},
+          {"item": "curd", "cal": 40, "protein": 3, "fiber": 0}
+        ],
+        "dinner": [
+          {"item": "soya chunks curry", "cal": 250, "protein": 25, "fiber": 5}
+        ],
+        "snacks": [
+          {"item": "popcorn", "cal": 250, "protein": 4, "fiber": 3}
+        ]
+      },
+      "total_cal": 1550,
+      "steps": 7800
+    },
+    {
+      "day": 3,
+      "meals": {
+        "breakfast": [
+          {"item": "3 dosas (egg)", "cal": 400, "protein": 20, "fiber": 3}
+        ],
+        "lunch": [
+          {"item": "quinoa+dal", "cal": 250, "protein": 10, "fiber": 5},
+          {"item": "pappu", "cal": 180, "protein": 9, "fiber": 4},
+          {"item": "3 eggs", "cal": 210, "protein": 18, "fiber": 0}
+        ],
+        "dinner": [
+          {"item": "quinoa+dal", "cal": 200, "protein": 8, "fiber": 4},
+          {"item": "curd", "cal": 60, "protein": 4, "fiber": 0},
+          {"item": "soya curry", "cal": 200, "protein": 20, "fiber": 4}
+        ]
+      },
+      "total_cal": 1500,
+      "steps": 6800
+    },
+    {
+      "day": 4,
+      "meals": {
+        "breakfast": [
+          {"item": "vadas + sambar + punugu", "cal": 500, "protein": 11, "fiber": 6}
+        ],
+        "lunch": [
+          {"item": "puligore", "cal": 300, "protein": 6, "fiber": 2},
+          {"item": "soya curry", "cal": 250, "protein": 25, "fiber": 5}
+        ],
+        "snacks": [
+          {"item": "protein smoothie", "cal": 300, "protein": 30, "fiber": 3}
+        ]
+      },
+      "total_cal": 1350,
+      "steps": 6700
+    },
+    {
+      "day": 5,
+      "meals": {
+        "breakfast": [
+          {"item": "egg cheese sandwich", "cal": 400, "protein": 25, "fiber": 2}
+        ],
+        "lunch": [
+          {"item": "rice + pappu", "cal": 380, "protein": 13, "fiber": 5}
+        ],
+        "snacks": [
+          {"item": "punugu", "cal": 120, "protein": 2, "fiber": 1},
+          {"item": "smoothie", "cal": 300, "protein": 30, "fiber": 3}
+        ],
+        "dinner": [
+          {"item": "soya + curd", "cal": 300, "protein": 29, "fiber": 5}
+        ]
+      },
+      "total_cal": 1500,
+      "steps": 5200
+    },
+    {
+      "day": 6,
+      "meals": {
+        "breakfast": [
+          {"item": "2 dosa + 3 eggs", "cal": 450, "protein": 24, "fiber": 3}
+        ],
+        "lunch": [
+          {"item": "rice + paneer + soya", "cal": 500, "protein": 25, "fiber": 4}
+        ],
+        "snacks": [
+          {"item": "punugu + smoothie", "cal": 400, "protein": 30, "fiber": 3}
+        ],
+        "dinner": [
+          {"item": "biryani", "cal": 600, "protein": 25, "fiber": 2}
+        ]
+      },
+      "total_cal": 1950,
+      "steps": 5400
+    },
+    {
+      "day": 7,
+      "note": "junk day not tracked"
+    },
+    {
+      "day": 8,
+      "meals": {
+        "breakfast": [
+          {"item": "smoothie", "cal": 300, "protein": 30, "fiber": 5}
+        ],
+        "lunch": [
+          {"item": "quinoa+dal", "cal": 250, "protein": 10, "fiber": 5},
+          {"item": "spinach pappu", "cal": 200, "protein": 10, "fiber": 5}
+        ],
+        "snacks": [
+          {"item": "salad + chips", "cal": 200, "protein": 5, "fiber": 6}
+        ],
+        "dinner": [
+          {"item": "high protein dinner", "cal": 700, "protein": 55, "fiber": 10}
+        ]
+      },
+      "total_cal": 1450,
+      "steps": 6800
+    },
+    {
+      "day": 9,
+      "meals": {
+        "breakfast": [
+          {"item": "4 dosas", "cal": 600, "protein": 10, "fiber": 2}
+        ],
+        "lunch": [
+          {"item": "quinoa+dal+curd", "cal": 400, "protein": 20, "fiber": 6}
+        ],
+        "snacks": [
+          {"item": "ice cream + punugu", "cal": 350, "protein": 5, "fiber": 1}
+        ],
+        "dinner": [
+          {"item": "dal + smoothie", "cal": 550, "protein": 35, "fiber": 5}
+        ]
+      },
+      "total_cal": 1900,
+      "steps": 5500
+    },
+    {
+      "day": 10,
+      "meals": {
+        "breakfast": [
+          {"item": "smoothie", "cal": 320, "protein": 30, "fiber": 5}
+        ],
+        "lunch": [
+          {"item": "quinoa+mango pappu+curd", "cal": 500, "protein": 25, "fiber": 8}
+        ],
+        "snacks": [
+          {"item": "curd + chutney", "cal": 150, "protein": 7, "fiber": 2}
+        ],
+        "dinner": [
+          {"item": "chicken pizza (full)", "cal": 650, "protein": 50, "fiber": 3}
+        ]
+      },
+      "total_cal": 1620,
+      "steps": 6800
+    },
+    {
+      "day": 11,
+      "label": "today",
+      "meals": {
+        "breakfast": [
+          {"item": "ABCD smoothie", "cal": 320, "protein": 30, "fiber": 5}
+        ],
+        "lunch": [
+          {"item": "quinoa+dal", "cal": 230, "protein": 8, "fiber": 5},
+          {"item": "tomato pappu", "cal": 150, "protein": 8, "fiber": 4},
+          {"item": "sambar", "cal": 40, "protein": 2, "fiber": 2},
+          {"item": "3 egg omelette", "cal": 220, "protein": 18, "fiber": 0}
+        ],
+        "dinner": [
+          {"item": "chicken pizza upgraded", "cal": 700, "protein": 50, "fiber": 3}
+        ]
+      },
+      "total_cal": 1660,
+      "steps": 2200
+    }
+  ]
+}

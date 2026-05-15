@@ -1,0 +1,233 @@
+[
+{
+"day": 1,
+"meals": [
+{
+"meal": "breakfast",
+"food": "ABCD smoothie (200g mix, milk, whey)",
+"calories": 320,
+"protein": 30,
+"fiber": 6
+},
+{
+"meal": "lunch",
+"food": "quinoa + moong dal, pappu, curd",
+"calories": 500,
+"protein": 20,
+"fiber": 10
+},
+{
+"meal": "snack",
+"food": "ice cream",
+"calories": 120,
+"protein": 2,
+"fiber": 0
+},
+{
+"meal": "dinner",
+"food": "quinoa + moong dal + curd",
+"calories": 450,
+"protein": 22,
+"fiber": 8
+}
+],
+"total_calories": 1390,
+"total_protein": 74,
+"steps": 5500
+},
+{
+"day": 2,
+"meals": [
+{
+"meal": "breakfast",
+"food": "puris + eggs",
+"calories": 500,
+"protein": 18,
+"fiber": 2
+},
+{
+"meal": "lunch",
+"food": "quinoa + dal + egg",
+"calories": 400,
+"protein": 18,
+"fiber": 6
+},
+{
+"meal": "dinner",
+"food": "chicken pizza (kheema base)",
+"calories": 700,
+"protein": 50,
+"fiber": 3
+}
+],
+"total_calories": 1600,
+"total_protein": 86,
+"steps": 6800
+},
+{
+"day": 3,
+"meals": [
+{
+"meal": "breakfast",
+"food": "ABCD smoothie",
+"calories": 320,
+"protein": 30,
+"fiber": 6
+},
+{
+"meal": "lunch",
+"food": "quinoa + dal + chicken curry",
+"calories": 500,
+"protein": 30,
+"fiber": 8
+},
+{
+"meal": "snack",
+"food": "ice cream",
+"calories": 200,
+"protein": 3,
+"fiber": 0
+},
+{
+"meal": "dinner",
+"food": "chicken curry",
+"calories": 400,
+"protein": 35,
+"fiber": 2
+}
+],
+"total_calories": 1420,
+"total_protein": 98,
+"steps": 5000
+},
+{
+"day": 4,
+"meals": [
+{
+"meal": "breakfast",
+"food": "egg dosas (3 eggs)",
+"calories": 550,
+"protein": 25,
+"fiber": 3
+},
+{
+"meal": "lunch",
+"food": "quinoa + dal + curd",
+"calories": 500,
+"protein": 22,
+"fiber": 10
+},
+{
+"meal": "dinner",
+"food": "chicken curry",
+"calories": 350,
+"protein": 30,
+"fiber": 2
+}
+],
+"total_calories": 1400,
+"total_protein": 77,
+"steps": 5000
+},
+{
+"day": 5,
+"meals": [
+{
+"meal": "breakfast",
+"food": "pesarattu + eggs",
+"calories": 600,
+"protein": 32,
+"fiber": 7
+},
+{
+"meal": "lunch",
+"food": "rice + chicken curry + curd",
+"calories": 500,
+"protein": 30,
+"fiber": 3
+},
+{
+"meal": "snack",
+"food": "ice cream",
+"calories": 200,
+"protein": 2,
+"fiber": 0
+},
+{
+"meal": "dinner",
+"food": "chicken curry",
+"calories": 350,
+"protein": 35,
+"fiber": 2
+}
+],
+"total_calories": 1650,
+"total_protein": 99,
+"steps": 8200
+},
+{
+"day": 6,
+"meals": [
+{
+"meal": "breakfast",
+"food": "ABCD smoothie + eggs + idli",
+"calories": 650,
+"protein": 32,
+"fiber": 7
+},
+{
+"meal": "lunch",
+"food": "kachori + chicken curry + curd",
+"calories": 520,
+"protein": 25,
+"fiber": 3
+},
+{
+"meal": "snack",
+"food": "rice with mango pickle",
+"calories": 250,
+"protein": 4,
+"fiber": 1
+},
+{
+"meal": "dinner",
+"food": "soya chunks curry + curd",
+"calories": 250,
+"protein": 25,
+"fiber": 5
+}
+],
+"total_calories": 1670,
+"total_protein": 86,
+"steps": 8200
+},
+{
+"day": 7,
+"meals": [
+{
+"meal": "breakfast",
+"food": "idli + eggs",
+"calories": 400,
+"protein": 22,
+"fiber": 2
+},
+{
+"meal": "lunch",
+"food": "quinoa + dal + curd",
+"calories": 400,
+"protein": 20,
+"fiber": 8
+},
+{
+"meal": "dinner",
+"food": "pepsi + veg sandwich",
+"calories": 400,
+"protein": 6,
+"fiber": 2
+}
+],
+"total_calories": 1200,
+"total_protein": 48,
+"steps": 3300
+}
+]
