@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 .env
 data/
+.idea/
+.DS_Store
+alembic/__pycache__/
