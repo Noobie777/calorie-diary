@@ -1,5 +1,7 @@
 import models
 from logger import logger
+from authentication.auth import hash_password
+from models import User
 
 #CREATE
 def create_log(db, log):
@@ -72,3 +74,14 @@ def patch_log(db, id: int, updated_log):
     db.refresh(log)
     logger.info(f"Updated log with ID: {id}")
     return log
+
+def create_user(db,user):
+    hashed_pw = hash_password(user.password)
+    db_user = User(
+        email = user.email,
+        hashed_password = hashed_pw
+    )
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return db_user
