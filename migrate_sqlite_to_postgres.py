@@ -6,7 +6,7 @@ from models import Log  # ✅ correct model
 SQLITE_URL = "sqlite:///./data/diary.db"
 
 # PostgreSQL (destination)
-POSTGRES_URL = "postgresql://user:password@localhost:5432/calorie_db"
+POSTGRES_URL = "REMOVED_SECRET"
 
 # Engines
 sqlite_engine = create_engine(SQLITE_URL)
