@@ -1,12 +1,26 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import Log  # ✅ correct model
+from config import settings
+from sqlalchemy import Column, Integer, String, Float, Date
+from sqlalchemy.orm import declarative_base
 
+Base = declarative_base()
+
+class OldLog(Base):
+    __tablename__ = "logs"
+
+    id = Column(Integer, primary_key=True)
+    food = Column(String)
+    calories = Column(Float)
+    protein = Column(Float)
+    fiber = Column(Float)
+    date = Column(Date)
 # SQLite (source)
 SQLITE_URL = "sqlite:///./data/diary.db"
 
 # PostgreSQL (destination)
-POSTGRES_URL = "REMOVED_SECRET"
+POSTGRES_URL = settings.DATABASE_URL
 
 # Engines
 sqlite_engine = create_engine(SQLITE_URL)
@@ -20,7 +34,8 @@ sqlite_db = SQLiteSession()
 postgres_db = PostgresSession()
 
 # Fetch all data from SQLite
-logs = sqlite_db.query(Log).all()
+#logs = sqlite_db.query(Log).all()
+logs =sqlite_db.query(OldLog).all()
 
 print(f"Found {len(logs)} records")
 
