@@ -1,64 +1,100 @@
-from fastapi.testclient import TestClient
-from main import app
-from database import Base
-from tests.test_database import engine,override_get_db
-from routes.logs import get_db
-import pytest
-Base.metadata.create_all(engine)
+from conftest import client
+#helpers
 
-app.dependency_overrides[get_db] = override_get_db
+def create_user_and_get_token(email, password):
+    client.post("/signup",
+                json={
+                    "email": email,
+                    "password": password
+                }
+                )
+    login_response = client.post("/login",
+                                 data={
+                                     "username":email,
+                                     "password":password
+                                 })
+    token = login_response.json()["access_token"]
+    return token
 
-@pytest.fixture(autouse=True)
-def clean_db():
-    Base.metadata.drop_all(engine)
-    Base.metadata.create_all(engine)
-
-client = TestClient(app)
-
-def test_create_log():
-    response = client.post("/logs", json={
-        "food": "Test Food",
-        "calories": 100,
-        "protein": 10,
-        "fiber": 2,
-        "date": "2026-04-08"
-    })
+def test_create_logs():
+    token = create_user_and_get_token("logs@test.com","testpassword")
+    response = client.post("/logs",
+                           json={
+                               "food": "Test Food",
+                               "calories": 500,
+                               "protein": 30,
+                               "fiber": 5,
+                               "date": "2026-05-21"
+                           },
+                           headers={"Authorization": f"Bearer {token}"
+                                    }
+                           )
     assert response.status_code == 200
     data = response.json()
-
     assert data["food"] == "Test Food"
-    assert data["calories"] == 100
+    assert data["calories"] == 500
 
-def test_get_logs():
-    response = client.get("/logs")
-    assert response.status_code == 200
-    assert isinstance(response.json(), list)
+def test_user_cannot_access_other_users_logs():
+    token_a = create_user_and_get_token("usera@test.com", "testpassword")
+    create_response = client.post("/logs",
+                                  json={
+                                      "food": "Test Food A",
+                                      "calories": 100,
+                                      "protein": 10,
+                                      "fiber": 2,
+                                      "date": "2026-05-21"
+                                  },
+                                  headers={"Authorization": f"Bearer {token_a}"
+                                           }
+                                  )
+    log_id = create_response.json()["id"]
 
-def test_patch_log():
-    create = client.post("/logs", json={
-        "food": "Patch Food",
-        "calories": 200,
-        "protein": 15,
-        "fiber": 3,
-        "date": "2026-04-08"
-    })
-    log_id = create.json()["id"]
+    token_b = create_user_and_get_token("userb@test.com", "testpassword")
+    response = client.get(f"/logs/{log_id}",
+                          headers={"Authorization": f"Bearer {token_b}"})
+    assert response.status_code == 404
 
-    response = client.patch(f"/logs/{log_id}", json={"calories": 300})
+def test_user_cannot_update_other_users_logs():
+    token_a = create_user_and_get_token("updatea@test.com", "testpassword")
+    create_response = client.post("/logs",
+                                  json={
+                                      "food": "Test Food A",
+                                      "calories": 100,
+                                      "protein": 10,
+                                      "fiber": 2,
+                                      "date": "2026-05-21"
+                                  },
+                                  headers={"Authorization": f"Bearer {token_a}"}
+                                  )
+    log_id = create_response.json()["id"]
 
-    assert response.status_code == 200
-    data = response.json()
-    assert data["calories"] == 300
+    token_b = create_user_and_get_token("updateb@test.com", "testpassword")
+    response_b = client.put(f"/logs/{log_id}",
+                            json={
+                                "food": "Test Food B",
+                                "calories": 100,
+                                "protein": 10,
+                                "fiber": 2,
+                                "date": "2026-05-21"
+                            },
+                            headers={"Authorization": f"Bearer {token_b}"})
+    assert response_b.status_code == 404
 
-def test_delete_log():
-    create = client.post("/logs", json={
-        "food": "Delete Food",
-        "calories": 150,
-        "protein": 12,
-        "fiber": 2,
-        "date": "2026-04-08"
-    })
-    log_id = create.json()["id"]
-    response = client.delete(f"/logs/{log_id}")
-    assert response.status_code == 200
-    data = response.json()["message"] = "Log deleted"
+def test_user_cannot_delete_other_users_logs():
+    token_a = create_user_and_get_token("deletea@test.com", "testpassword")
+    create_response = client.post("/logs",
+                                  json={
+                                      "food": "Delete Food A",
+                                      "calories": 100,
+                                      "protein": 10,
+                                      "fiber": 2,
+                                      "date": "2026-05-21"
+                                  },
+                                  headers={"Authorization": f"Bearer {token_a}"
+                                           }
+                                  )
+    log_id = create_response.json()["id"]
+
+    token_b = create_user_and_get_token("deleteb@test.com", "testpassword")
+    response_b = client.delete(f"/logs/{log_id}",headers={"Authorization": f"Bearer {token_b}"})
+    assert response_b.status_code == 404

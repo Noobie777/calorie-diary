@@ -1,17 +1,18 @@
 import models
 from logger import logger
-from authentication.auth import hash_password
+from authentication.auth import hash_password, verify_password
 from models import User
 
 #CREATE
-def create_log(db, log):
+def create_log(db, log,current_user):
     logger.info(f"Creating log for food: {log.food}")
     db_log = models.Log(
         food=log.food,
         calories=log.calories,
         protein=log.protein,
         fiber=log.fiber,
-        date=log.date
+        date=log.date,
+        user_id=current_user.id
     )
     db.add(db_log)
     db.commit()
@@ -21,19 +22,19 @@ def create_log(db, log):
     return db_log
 
 #SELECT *
-def get_logs(db):
-    logger.info(f"Fetching all logs")
-    return db.query(models.Log).all()
+def get_logs(db,current_user):
+    logger.info(f"Fetching all logs for user: {current_user.id}")
+    return db.query(models.Log).filter(models.Log.user_id == current_user.id).all()
 
 #SELECT * from WHERE id=id
-def get_log(db, id: int):
+def get_log(db, id: int, current_user):
     logger.info(f"Fetching log with ID: {id}")
-    return db.query(models.Log).filter(models.Log.id == id).first()
+    return db.query(models.Log).filter(models.Log.id == id, models.Log.user_id == current_user.id).first()
 
 #DELETE
-def delete_log(db, id: int):
+def delete_log(db, id: int, current_user):
     logger.info(f"Deleting log with ID: {id}")
-    log = db.query(models.Log).filter(models.Log.id == id).first()
+    log = db.query(models.Log).filter(models.Log.id == id, models.Log.user_id == current_user.id).first()
     if log:
         db.delete(log)
         db.commit()
@@ -43,8 +44,8 @@ def delete_log(db, id: int):
     return log
 
 #UPDATE
-def update_log(db, id:int, updated_log):
-    log = db.query(models.Log).filter(models.Log.id == id).first()
+def update_log(db, id:int, updated_log,current_user):
+    log = db.query(models.Log).filter(models.Log.id == id,models.Log.user_id == current_user.id).first()
 
     if not log:
         return None
@@ -59,9 +60,9 @@ def update_log(db, id:int, updated_log):
     db.refresh(log)
     return log
 
-def patch_log(db, id: int, updated_log):
+def patch_log(db, id: int, updated_log,current_user):
     logger.info(f"Patching log with ID: {id}")
-    log = db.query(models.Log).filter(models.Log.id == id).first()
+    log = db.query(models.Log).filter(models.Log.id == id, models.Log.user_id == current_user.id).first()
 
     if not log:
         logger.warning(f"No log with ID: {id}")
@@ -85,3 +86,11 @@ def create_user(db,user):
     db.commit()
     db.refresh(db_user)
     return db_user
+
+def authenticate_user(db, email:str, password:str):
+    user = db.query(User).filter(User.email == email).first()
+    if not user:
+        return None
+    if not verify_password(password, user.hashed_password):
+        return None
+    return user
