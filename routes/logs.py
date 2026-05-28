@@ -5,6 +5,7 @@ from database import SessionLocal,get_db
 from schemas import FoodLogCreate, FoodLogRead, FoodLogUpdate
 from authentication.auth import get_current_user
 from models import User
+from datetime import date
 
 router = APIRouter()
 
@@ -21,8 +22,26 @@ def create_log(log: FoodLogCreate, db: Session = Depends(get_db), current_user: 
 
 
 @router.get("/logs",response_model=list[FoodLogRead])
-def get_logs(db: Session = Depends(get_db),current_user: User = Depends(get_current_user)):
-    return crud.get_logs(db,current_user)
+def get_logs(skip: int = 0,
+             limit: int = 10,
+             food: str | None = None,
+             min_calories: int | None = None,
+             max_calories: int | None = None,
+             sort: str = "desc",
+             start_date: date | None = None,
+             end_date: date | None = None,
+             db: Session = Depends(get_db),
+             current_user: User = Depends(get_current_user)):
+    return crud.get_logs(db,current_user,
+                         skip,
+                         limit,
+                         food,
+                         min_calories,
+                         max_calories,
+                         sort,
+                         start_date,
+                         end_date
+                         )
 
 
 @router.get("/logs/{id}",response_model=FoodLogRead)

@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 from database import Base
+from datetime import datetime, UTC
 
 class Log(Base):
     __tablename__ = "logs"
@@ -20,3 +21,11 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String,nullable=False)
     logs = relationship("Log", back_populates="owner")
+
+class RefreshToken(Base):
+    __tablename__ = "refresh_tokens"
+    id = Column(Integer, primary_key=True, index=True)
+    token = Column(String, unique=True, nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"))
+    revoked = Column(Boolean,default=False)
+    created_at = Column(Date,default=datetime.now(UTC))
