@@ -2,8 +2,6 @@ from fastapi import FastAPI
 from database import engine
 import models
 from routes import logs, users
-import asyncio
-import time
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.middleware import SlowAPIMiddleware
 from slowapi.errors import RateLimitExceeded

@@ -1,5 +1,3 @@
-from urllib import response
-
 from conftest import client
 
 def test_signup():

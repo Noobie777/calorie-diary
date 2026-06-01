@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 import crud
-from database import SessionLocal,get_db
+from database import get_db
 from models import User
 from schemas import UserCreate, UserRead, Token, RefreshToken, LogoutRequest
 from fastapi.security import OAuth2PasswordRequestForm
@@ -12,7 +12,8 @@ router = APIRouter()
 
 
 @router.post("/signup", response_model = UserRead)
-def signup(user: UserCreate, db: Session = Depends(get_db)):
+@limiter.limit("5/minute")
+def signup(request:Request,user: UserCreate, db: Session = Depends(get_db)):
     return crud.create_user(db, user)
 
 @router.post("/login", response_model = Token)

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 import crud
-from database import SessionLocal,get_db
+from database import get_db
 from schemas import FoodLogCreate, FoodLogRead, FoodLogUpdate
 from authentication.auth import get_current_user
 from models import User

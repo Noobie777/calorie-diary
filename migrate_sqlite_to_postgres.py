@@ -34,7 +34,6 @@ sqlite_db = SQLiteSession()
 postgres_db = PostgresSession()
 
 # Fetch all data from SQLite
-#logs = sqlite_db.query(Log).all()
 logs =sqlite_db.query(OldLog).all()
 
 print(f"Found {len(logs)} records")

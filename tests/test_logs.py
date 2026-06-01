@@ -1,5 +1,4 @@
 from conftest import client
-import random
 #helpers
 
 def create_user_and_get_token(email, password):

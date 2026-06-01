@@ -56,9 +56,3 @@ class RefreshToken(BaseModel):
 
 class LogoutRequest(BaseModel):
     refresh_token: str
-# class FoodLog(BaseModel):
-#     food: str
-#     calories: float
-#     protein: float
-#     fiber: float
-#     date: date

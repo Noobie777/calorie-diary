@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey, Boolean
+from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey, Boolean, DateTime
 from sqlalchemy.orm import relationship
 from database import Base
 from datetime import datetime, UTC
@@ -28,4 +28,4 @@ class RefreshToken(Base):
     token = Column(String, unique=True, nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"))
     revoked = Column(Boolean,default=False)
-    created_at = Column(Date,default=datetime.now(UTC))
+    created_at = Column(DateTime,default=lambda: datetime.now(UTC))
