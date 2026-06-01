@@ -1,14 +1,14 @@
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
-
 from fastapi.testclient import TestClient
-
 from database import Base, get_db
+from config import settings
+settings.TESTING = True
+
 from main import app
 
 if os.path.exists("test.db"):
@@ -29,5 +29,6 @@ def override_get_db():
     finally:
         db.close()
 app.dependency_overrides[get_db] = override_get_db
+
 
 client = TestClient(app)
