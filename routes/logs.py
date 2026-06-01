@@ -9,13 +9,6 @@ from datetime import date
 
 router = APIRouter()
 
-# def get_db():
-#     db = SessionLocal()
-#     try:
-#         yield db
-#     finally:
-#         db.close()
-
 @router.post("/logs",response_model=FoodLogRead)
 def create_log(log: FoodLogCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     return crud.create_log(db, log,current_user)
