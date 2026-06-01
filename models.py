@@ -6,7 +6,7 @@ from datetime import datetime, UTC
 class Log(Base):
     __tablename__ = "logs"
 
-    id = Column(Integer, primary_key=True,index=True)
+    id = Column(Integer, primary_key=True)
     food = Column(String)
     calories = Column(Float)
     protein = Column(Float)
@@ -17,14 +17,14 @@ class Log(Base):
 
 class User(Base):
     __tablename__ = "users"
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True)
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String,nullable=False)
     logs = relationship("Log", back_populates="owner")
 
 class RefreshToken(Base):
     __tablename__ = "refresh_tokens"
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True)
     token = Column(String, unique=True, nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"))
     revoked = Column(Boolean,default=False)
