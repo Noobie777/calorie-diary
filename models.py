@@ -12,7 +12,7 @@ class Log(Base):
     protein = Column(Float)
     fiber = Column(Float)
     date = Column(Date)
-    user_id = Column(Integer, ForeignKey("users.id"))
+    user_id = Column(Integer, ForeignKey("users.id"),index=True )
     owner = relationship("User", back_populates="logs")
 
 class User(Base):

@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 import crud
 from database import SessionLocal,get_db
@@ -6,6 +6,8 @@ from models import User
 from schemas import UserCreate, UserRead, Token, RefreshToken, LogoutRequest
 from fastapi.security import OAuth2PasswordRequestForm
 from authentication.auth import create_access_token, get_current_user, create_refresh_token,refresh_token_verification
+from limiter import limiter
+
 router = APIRouter()
 
 
@@ -14,7 +16,8 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
     return crud.create_user(db, user)
 
 @router.post("/login", response_model = Token)
-def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+@limiter.limit("5/minute")
+def login(request: Request, form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     user = crud.authenticate_user(db, form_data.username, form_data.password)
     if not user:
         raise HTTPException(status_code=400, detail="Incorrect username or password")
